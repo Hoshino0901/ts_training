@@ -73,3 +73,12 @@ let cloth:
 
 type clothSize = "small" | "medium" | "large"
 let size2: clothSize;
+////////////////////////////////////////////////////////////////////////////////////
+function SayHello1(): void{
+    console.log("Hello!");
+}
+
+function SayHello2(): undefined{
+    console.log("Hello!");
+    return; // returnがないとエラー
+}
