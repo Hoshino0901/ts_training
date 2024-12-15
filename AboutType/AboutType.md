@@ -127,3 +127,28 @@ let cloth:{
 type clothSize = "small" | "medium" | "large" // typeのエイリアス化で型に名前をつける
 let size: clothSize; // "small", "medium", "large"しか取れない変数
 ```
+
+## 関数の型
+- 関数の型の書き方
+```typescript
+function add(a: number, b: number): number {
+    return a + b;
+}
+```
+- 戻り値は型推論可能だが、引数は型推論できなく、型指定をしなければany型になる。
+
+## void型関数とundefined型
+- jsのvoid型関数は`undefined`を返す。`undefined`は型の名前。
+```typescript
+// オーソドックスなvoid型で定義
+function SayHello(): void{
+    console.log("Hello!");
+}
+```
+```typescript
+// undefined型の変数を返すように書く
+function SayHello(): undefined{
+    console.log("Hello!");
+    return; // returnがないとエラー
+}
+```
