@@ -39,7 +39,6 @@ var anything1 = true;
 anything1 = "hello";
 anything1 = 10;
 var anything2 = "Hello!";
-anything2 = 19;
 var word = "Hi!";
 console.log(word);
 word = anything2;
@@ -58,3 +57,11 @@ var cloth = {
     size: "small"
 };
 var size2;
+////////////////////////////////////////////////////////////////////////////////////
+function SayHello1() {
+    console.log("Hello!");
+}
+function SayHello2() {
+    console.log("Hello!");
+    return; // returnがないとエラー
+}
