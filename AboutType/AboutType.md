@@ -72,7 +72,8 @@ let Coffee = {
 
 ## any型
 - any型 : どんな型を入れることもできる
-- pointerの概念とは違い、再代入で別の型を入れることも可能
+- 再代入で別の型を入れることも可能
+- 別の型の変数に代入してコンパイルできてしまう
 - バグの温床なので使わないのがbetter
 ```typescript
 let anything: any = true;
@@ -150,5 +151,110 @@ function SayHello(): void{
 function SayHello(): undefined{
     console.log("Hello!");
     return; // returnがないとエラー
+}
+```
+## 関数の代入と型推論、型注釈
+- 関数を代入する変数を作成可能
+- 関数の型注釈は `=>`を使う
+```typescript
+function Add(n1: number, n2: number): number
+{
+    return n1 + n2;
+}
+// 関数を代入(型推論)
+const AnotherAdd1 = Add;
+// 型注釈
+const AnotherAdd2: (n1: number, n2: number) => number = Add;
+// 右辺を無名関数にもできる
+const AnotherAdd3: (n1: number, n2: number) => number = function (n1:number, n2: number): number
+{
+    return n1 + n2;
+}
+// 型は片方に明記されていれば十分
+const AnotherAdd4 = function (n1:number, n2: number): number
+{
+    return n1 + n2;
+}
+const AnotherAdd5: (n1: number, n2: number) => number = function(n1, n2)
+{
+    return n1 + n2;
+}
+function
+```
+- arrow関数も作成可能
+```typescript
+const DoubleNumber = (num: number) => number: num * 2
+```
+
+## callback関数
+- 関数の引数に関数を入れる
+```typescript
+function DoubleAndHandle(num: number, cb: (number) => number): void
+{
+    const doubleNumber = cb(num);
+    console.log(doubleNumber);
+}
+```
+
+## unknown型
+- any型と同様にどの型の値も代入可能
+```typescript
+let unknownInput: unknown;
+unknownInput = "Hello";
+unknownInput = 10;
+unknownInput = true;
+```
+- any型と異なり、unknown型の変数を代入する際にコンパイルエラーが発生。
+```typescript
+let unknown: unknown = 10;
+let word: string;
+word = unknown // any型とは違いコンパイルエラー
+```
+
+## satisfies演算子
+`satisfies`の左の変数or値が右側の型であるかをチェックする演算子
+```typescript
+10 satisfies number;
+"10" satisfies number; // エディタ上でエラー
+```
+- 型推論と`satisfies`を組み合わせて型指定と同様のことが可能
+```typescript
+const num = "10" satisfies number; //"10"がnumberに代入できないのでコンパイルエラー
+```
+
+## never型
+- 関数が`undefined`を含め一切何も返さない時、never型で型指定できる。ただし、型推論に任せるとvoid型になる。
+```typescript
+function ReturnError(message: string): never
+{
+    throw new Error(message);
+}
+// エラーを返す関数は何も返さないのでnever型
+function ReturnError(message: string)
+{
+    throw new Error(message);
+}
+// void型として推論される。
+```
+- 関数を変数として代入すると、never型で推論される。
+```typescript
+const error = (message: string) => 
+{
+    throw new Error(message);
+}
+// never型として推論される。
+```
+- switch文で全ケースを網羅できているかチェックに使える。
+```typescript
+function GetSizeName(size: "s" | "m" | "l")
+{
+    switch (size)
+    {
+        case "s": return "small";
+        case "m": return "medium";
+        case "l": return "large";
+        defalt: return size satisfies never
+        // 全ケースを網羅できてきるのでsizeはnever型になる
+    }
 }
 ```

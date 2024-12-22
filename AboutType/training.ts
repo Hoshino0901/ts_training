@@ -82,3 +82,65 @@ function SayHello2(): undefined{
     console.log("Hello!");
     return; // returnがないとエラー
 }
+////////////////////////////////////////////////////////////////////////////////////
+function Add(n1: number, n2: number): number
+{
+    return n1 + n2;
+}
+
+const AnotherAdd1 = Add;
+
+const AnotherAdd2: (n1: number, n2: number) => number = Add;
+
+const AnotherAdd3: (n1: number, n2: number) => number = function (n1:number, n2: number): number
+{
+    return n1 + n2;
+}
+
+const AnotherAdd4 = function (n1:number, n2: number): number
+{
+    return n1 + n2;
+}
+
+const AnotherAdd5: (n1: number, n2: number) => number = function(n1, n2)
+{
+    return n1 + n2;
+}
+
+const DoubleNumber: (num: number) => number = num => num * 2
+////////////////////////////////////////////////////////////////////////////////////
+function DoubleAndHandle(num: number, cb: (number) => number): void
+{
+    const doubleNumber = cb(num);
+    console.log(doubleNumber);
+}
+////////////////////////////////////////////////////////////////////////////////////
+let unknownInput: unknown;
+unknownInput = "Hello";
+unknownInput = 10;
+unknownInput = true;
+////////////////////////////////////////////////////////////////////////////////////
+10 satisfies number;
+const num = 10 satisfies number;
+////////////////////////////////////////////////////////////////////////////////////
+function ReturnError(message: string): never
+{
+    throw new Error(message);
+}
+console.log(ReturnError("Error!!!!!!!!!"));
+
+const error = (message: string) =>
+{
+    throw new Error(message);
+}
+
+function GetSizeName(size: "s" | "m" | "l")
+{
+    switch (size)
+    {
+        case "s": return "small";
+        case "m": return "medium";
+        case "l": return "large";
+        default: return size satisfies never
+    }
+}

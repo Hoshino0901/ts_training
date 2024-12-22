@@ -65,3 +65,37 @@ function SayHello2() {
     console.log("Hello!");
     return; // returnがないとエラー
 }
+////////////////////////////////////////////////////////////////////////////////////
+function Add(n1, n2) {
+    return n1 + n2;
+}
+var AnotherAdd1 = Add;
+var AnotherAdd2 = Add;
+var AnotherAdd3 = function (n1, n2) {
+    return n1 + n2;
+};
+var AnotherAdd4 = function (n1, n2) {
+    return n1 + n2;
+};
+var AnotherAdd5 = function (n1, n2) {
+    return n1 + n2;
+};
+var DoubleNumber = function (num) { return num * 2; };
+////////////////////////////////////////////////////////////////////////////////////
+function DoubleAndHandle(num, cb) {
+    var doubleNumber = cb(num);
+    console.log(doubleNumber);
+}
+////////////////////////////////////////////////////////////////////////////////////
+var unknownInput;
+unknownInput = "Hello";
+unknownInput = 10;
+unknownInput = true;
+////////////////////////////////////////////////////////////////////////////////////
+10;
+var num = 10;
+////////////////////////////////////////////////////////////////////////////////////
+function ReturnError(message) {
+    throw new Error(message);
+}
+console.log(ReturnError("Error!!!!!!!!!"));
