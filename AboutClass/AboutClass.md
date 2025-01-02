@@ -189,7 +189,7 @@ set subject(value: string): void
 ```
 - getterとsetterは同じ名前を使うことができる。同じ名前を使用するときは、getterの戻り値とsetterの引数の型が同じ必要がある。
 
-# static
+### static
 - staticを最初につけることで、staticフィールドやstaticメソッドを作成可能。
 - インスタンスに対してはstaticフィールドやstaticメソッドは使用できないことに注意。
 ```typescript
