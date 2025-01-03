@@ -1,5 +1,5 @@
 # クラス
-### コンストラクタ
+## コンストラクタ
 - `this`を使って自身のフィールドにアクセスする。
 ```typescript
 constructor(iniName: string)
@@ -8,7 +8,7 @@ constructor(iniName: string)
     }
 ```
 
-### メソッド
+## メソッド
 - `function`は書かずに定義。
 - `this`はメソッドの左側に来るインスタンスを指す。
 - メソッドの引数に`this` を加え、型の指定をすることが可能。
@@ -50,7 +50,7 @@ greeting(this: {name: string}) // thisはnameというstring型のフィール�
     }
     person3.greeting() // ng
 ```
-### フィールドの初期化を省略する方法
+## フィールドの初期化を省略する方法
 - コンストラクタの変数に直接修飾子を入れる。
 ```typescript
 constructor(public name: string, private age: number)
@@ -59,7 +59,7 @@ constructor(public name: string, private age: number)
     }
 ```
 
-### readonly
+## readonly
 - クラス内外で読み取り専用にする。
 - クラス内のコンストラクタのみ書き換え可能。
 ```typescript
@@ -71,7 +71,7 @@ constructor(iniName: string, iniAge: number)
     }
 ```
 
-### extends
+## extends
 - クラスの継承が可能。
 - メソッドの上書きをしたい場合は、同じ名前のメソッドで定義すればOK。
 ```typescript
@@ -129,7 +129,7 @@ class Teacher extends Person
 }
 ```
 
-### protected修飾子
+## protected修飾子
 - privateの範囲を、クラスの継承先まで広げることが可能。
 ```typescript
 class Person
@@ -163,7 +163,7 @@ class Teacher extends Person
 }
 ```
 
-### getter, setter
+## getter, setter
 - getter
 ```typescript
 get subject(): string
@@ -189,7 +189,7 @@ set subject(value: string): void
 ```
 - getterとsetterは同じ名前を使うことができる。同じ名前を使用するときは、getterの戻り値とsetterの引数の型が同じ必要がある。
 
-### static
+## static
 - staticを最初につけることで、staticフィールドやstaticメソッドを作成可能。
 - インスタンスに対してはstaticフィールドやstaticメソッドは使用できないことに注意。
 ```typescript
@@ -203,7 +203,7 @@ static isAdult(age: number): boolean
 }
 ```
 
-### abstract
+## abstract
 - abstractクラス内で、abstractメソッドを定義可能。
 - abstractクラスを継承したクラスは、abstractメソッドの中身を必ず実装しなければならない。
 - abstractメソッドは戻り値の型を指定する必要あり。
