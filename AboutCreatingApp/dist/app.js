@@ -1,12 +1,12 @@
 "use strict";
 class Score {
     constructor() { }
-    get _totalScore() {
+    get totalScore() {
         const foods = Foods.getInstance();
         return foods.activeElementsScore.reduce((preVal, curVal) => preVal + curVal, 0);
     }
     render() {
-        document.querySelector('.score__number').textContent = String(this._totalScore);
+        document.querySelector('.score__number').textContent = String(this.totalScore);
     }
     static getInstance() {
         if (!Score.instance) {

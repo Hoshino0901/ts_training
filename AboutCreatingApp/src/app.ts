@@ -1,15 +1,31 @@
-class Score {
+interface IScore {
+    readonly totalScore: number;
+    render(): void;    
+}
+
+interface IFood {
+    element: HTMLDivElement;
+    clickEventHandler(): void; 
+}
+
+interface IFoods {
+    elements: NodeListOf<HTMLDivElement>;
+    readonly activeElements: HTMLDivElement[];
+    readonly activeElementsScore: number[];
+}
+
+class Score implements IScore {
     private static instance: Score;
 
     private constructor() {}
 
-    private get _totalScore(): number {
+    get totalScore(): number {
         const foods = Foods.getInstance();
         return foods.activeElementsScore.reduce((preVal, curVal) => preVal + curVal, 0)
     }
 
-    public render() {
-        document.querySelector('.score__number')!.textContent = String(this._totalScore)
+    public render(): void {
+        document.querySelector('.score__number')!.textContent = String(this.totalScore)
     }
 
     public static getInstance(): Score {
@@ -20,7 +36,7 @@ class Score {
     }
  }
 
-class Food {
+class Food implements IFood {
     // element: HTMLDivElement; コンストラクタの引数にpublicをつけることで省略できる。
     constructor(public element: HTMLDivElement) {
         element.addEventListener('click', this.clickEventHandler.bind(this));
@@ -32,14 +48,14 @@ class Food {
         // bindはclickEventHandlerが呼び出しており、clickEventHandlerはFoodクラスのインスタンスに所属しているのでthisはFoodクラスのインスタンス。
     }
 
-    clickEventHandler() {
+    clickEventHandler(): void {
         this.element.classList.toggle('food--active');
         const score = Score.getInstance();
         score.render();
     }
  }
 
-class Foods { 
+class Foods implements IFoods { 
     private static instance: Foods;
     public elements: NodeListOf<HTMLDivElement> = document.querySelectorAll<HTMLDivElement>('.food');
     private _activeElements: HTMLDivElement[] = [];
