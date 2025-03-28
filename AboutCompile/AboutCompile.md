@@ -38,7 +38,7 @@ exclude: [
 ```json
 // tsconfig.jsonの中に次のブロックを作成
 "include":[
-    "hoge.json"
+    "hoge.ts"
 ]
 ```
 - `include`と`exclude`がどちらもある場合は、`include`に入っているものだけがコンパイルされる。ただし、`include`と`exclude`どちらにも入っている場合、そのファイルはコンパイルされない。
