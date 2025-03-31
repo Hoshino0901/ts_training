@@ -136,6 +136,7 @@ let myClass: MyClass; // 型としてのみ使える。
 - javascriptやpngなどをまとめるときに使うバンドル。
 - まず以下でインストール
 ```zsh
+npm init -y
 npm install --save-dev webpack webpack-cli
 ```
 - `npm install ~`を行うとpackage-lock.jsonとpackage.jsonが作成される。これらがあれば、`npm install`で必要な依存関係をインストールできる。
