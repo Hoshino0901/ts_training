@@ -170,8 +170,11 @@ npm run build
 - `tsc`をしてからこのコマンドをすることで、tsモジュール-> jsモジュール->bundle.jsの流れで一つのファイルにコンパイルすることができる。
 
 ## ts-loader
-- tsモジュールからバンドルに一度で変換する。
-- webpackを以下のように変更。
+- tsモジュールからバンドルに一度で変換する。まずはインストール。
+```zsh
+npm install --save-dev ts-loader
+```
+- webpack.config.jsを以下のように変更。
 ```javascript
 module.exports = {
     entry: './src/main.ts',
