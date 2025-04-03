@@ -231,7 +231,7 @@ npm run build
 ## RnD環境(webpack-dev-server)
 - webpack-dev-serverでRnD用の環境を構築できる。
 ```bash
-npm install --save-dev webpack-dev-server
+npm install --save-dev webpack-dev-server webpack-cli
 ```
 - package.jsonで`"webpack-dev-serve"`コマンドを割り当てて動かす。
 - index.htmlやstyle.cssなどは、publicというディレクトリを作成しその中で管理しなければならない。
