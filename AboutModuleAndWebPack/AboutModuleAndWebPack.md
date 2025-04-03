@@ -170,7 +170,7 @@ npm run build
 - `tsc`をしてからこのコマンドをすることで、tsモジュール-> jsモジュール->bundle.jsの流れで一つのファイルにコンパイルすることができる。
 
 ## ts-loader
-- tsモジュールからバンドルに一度で変換する。まずはインストール。
+- ts-loaderとは、tsモジュールからバンドルに一度で変換するパッケージ。まずはインストール。
 ```zsh
 npm install --save-dev ts-loader
 ```
