@@ -127,7 +127,7 @@ let myClass: MyClass; // 型としてのみ使える。
 <script src="dist/main.js" defer  type="module"></script>
 <!--moduleとして扱われる-->
 
-<script src="dist/main.js" defer  type="module"></script>
+<script src="dist/main.js" defer></script>
 <!--scriptして扱われる-->
 ```
 - typescriptでは、`import`や`export`があるとmoduleとしてコンパイルされ、ないとscriptとしてコンパイルされる。
