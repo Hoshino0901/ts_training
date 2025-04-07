@@ -139,7 +139,7 @@ let myClass: MyClass; // 型としてのみ使える。
 npm init -y
 npm install --save-dev webpack webpack-cli
 ```
-- `npm install ~`を行うとpackage-lock.jsonとpackage.jsonが作成される。これらがあれば、`npm install`で必要な依存関係をインストールできる。
+- `npm install ~`を行うとpackage-lock.jsonが作成され、何かの依存関係をインストールするとpackage.jsonが作成される。これらがあれば、`npm install`で必要な依存関係をインストールできる。
 - `--save-dev`でテスト環境用のパッケージとしてインストールできる。
 
 
